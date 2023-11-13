@@ -9,7 +9,7 @@ function App() {
 	return (
 		<>
 			<Navbar/>
-			<ItemListContainer/>
+			<ItemListContainer greeting="Lista de Productos: (Comision 49895)"/>
 		</>
 	);
 }
