@@ -518,9 +518,11 @@ body {
 
 #root>p {
 
-    font-size: 24px;
+    font-size: 26px;
     height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    font-weight: 600;
 }
