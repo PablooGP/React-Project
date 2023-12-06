@@ -16,6 +16,7 @@ const ItemListContainer = ({ greeting }) => {
                 setProducts(response.response)
             }
         }
+        console.log("fetch data")
         fetchData()
     }, [id])
 
@@ -25,9 +26,13 @@ const ItemListContainer = ({ greeting }) => {
             <div id="spanFilterContainer">
                 <div id="productsContainer">
                     {
-                        products.map((item, i) => {
-                            return <ProductItem name={item.name} key={i} stock={item.stock} id={item.id} price={item.price - item.discount} imageName={"imageReact.png"} />
-                        })
+
+                        products.length > 0 ?
+                            products.map((item, i) => {
+                                return <ProductItem name={item.name} key={i} stock={item.stock} id={item.id} price={item.price - item.discount} imageName={item.image} />
+                            })
+                        :
+                        <p>{"CARGANDO CONTENIDO"}</p>
                     }
 
                 </div>

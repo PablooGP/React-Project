@@ -2,6 +2,8 @@ import React from 'react'
 import { ConvertPrice } from "../scripts/functions.js"
 import { Link, NavLink } from 'react-router-dom'
 
+const backend_url = "https://backend-react-production.up.railway.app"
+
 const ProductItem = ({name, stock, price, imageName, id}) => {
     let stockText = "MUCHO STOCK"
     let stockClass = "productStockDisp-type1"
@@ -17,7 +19,7 @@ const ProductItem = ({name, stock, price, imageName, id}) => {
     return (
         <Link to={`/item/${id}`} className="productoFrame-type1">
             <div className="productImage-type1">
-                <img className="productImage-type1" srcSet={`/assets/${imageName}`} alt={name}/>
+                <img className="productImageFull" srcSet={`${backend_url}/images/${imageName}`} alt={name}/>
             </div>
             <p className="productTitle-type1">{name}</p>
             <div className="productSeparador-type1">
