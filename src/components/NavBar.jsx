@@ -3,13 +3,14 @@ import React from "react"
 import CartWidget from "./CartWidget.jsx"
 import LoginWidget from "./LoginWidget.jsx"
 import Searchbar from "./Searchbar.jsx"
+import { Link } from "react-router-dom"
 
 const Navbar = () => {
     return (
         <div className="navbarContainer">
-            <div className="storebrand">
+            <Link to={"/"} className="storebrand">
                 <h1>{"PCCOMPONENTES"}</h1>
-            </div>
+            </Link>
 
             <Searchbar/>
 
@@ -19,11 +20,11 @@ const Navbar = () => {
             </span>
 
             <div className="navbar">
-                <a className="navbarButton" type="button" href="http://localhost:3000/descuentos">EN DESCUENTO</a>
-                <a className="navbarButton" type="button" href="http://localhost:3000/products">PRODUCTOS</a>
-                <a className="navbarButton" type="button" href="http://localhost:3000/contacto">CONTÁCTANOS</a>
-                <a className="navbarButton" type="button" href="http://localhost:3000/nuevo-producto">CREAR PRODUCTO</a>
-                <a className="navbarButton" type="button" href="http://localhost:3000/pedidos">MIS PEDIDOS</a>
+                <Link to={"/category/2"} className="navbarButton" type="button">EN DESCUENTO</Link>
+                <Link to={"/category/1"} className="navbarButton" type="button">PRODUCTOS</Link>
+                <Link to={"/category/3"} className="navbarButton" type="button">PROCESADORES</Link>
+                <Link to={"/category/4"} className="navbarButton" type="button">MONITORES</Link>
+                <Link to={"/category/5"} className="navbarButton" type="button">TARJETAS GRAFICAS</Link>
             </div>
         </div>
     )
