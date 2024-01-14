@@ -687,5 +687,16 @@ body {
 }
 
 .endCheckout {
-	
+	display: flex;
+	justify-content: center;
+    align-items: center;
+	text-decoration: none;
+	background-color: #06e736;
+	width: 220px;
+	height: 40px;
+	color: white;
+	border: none;
+	border-radius: 10px;
+	font-weight: 600;
+	font-size: 18px
 }

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useCartContext } from './CartContext'
 import { ItemQuantitySelector } from './ItemDetail.jsx'
 import { ConvertPrice } from '../scripts/functions.js'
+import { Link } from 'react-router-dom'
 
 const Checkout = () => {
 
@@ -30,9 +31,8 @@ const Checkout = () => {
 					)
 				})}
 			</div>
-			<button className="endCheckout" type="button" style={{display: Cart.GetAllProducts()==0 && "none"}}>
-
-			</button>
+			<></>
+			<Link to={"/brief"} className="endCheckout" type="button" style={{display: Cart.GetAllProducts()==0 && "none"}}>Finalizar compra</Link>
 		</>
 
 	)
