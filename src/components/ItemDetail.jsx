@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { ConvertPrice } from '../scripts/functions'
 import { useCartContext } from './CartContext.jsx'
 
-const ItemQuantitySelector = ({ def, mainButton, text, onChange }) => {
+const ItemQuantitySelector = ({ def, mainButton, text, onChange, classes }) => {
 
 	const [amount, setAmount] = useState(def || 1)
 	const amountFunction = (add) => {
@@ -18,8 +18,8 @@ const ItemQuantitySelector = ({ def, mainButton, text, onChange }) => {
 	}, [amount])
 
 	return (
-		<>
-			<div>
+		<div className={"horizontal " + classes || " "}>
+			<div className="horizontal">
 				<button type="button" className="inputDetailButton detailButtonRemove" style={{display:amount==1&&onChange&&"none"}} onClick={() => amountFunction(-1)}>{"-"}</button>
 				<p className="itemDetailInputText">{amount}</p>
 				<button type="button" className="inputDetailButton detailButtonAdd" onClick={() => amountFunction(1)}>{"+"}</button>
@@ -27,7 +27,7 @@ const ItemQuantitySelector = ({ def, mainButton, text, onChange }) => {
 			<button type="button" className="itemDetailAddToCart" onClick={() => mainButton(amount)}>
 				<p>{text}</p>
 			</button>
-		</>
+		</div>
 	)
 }
 

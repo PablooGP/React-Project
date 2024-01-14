@@ -1,5 +1,5 @@
 * {
-	margin: 0!important;
+	margin: 0 !important;
 	font-family: 'Noto Sans', sans-serif;
 	text-decoration: none;
 }
@@ -596,54 +596,26 @@ body {
 		display: flex;
 
 		gap: 15px;
+		width: 350px;
 
-		&>div {
-
-			display: flex;
-			background-color: #e0e0e0;
-			width: 140px;
-			height: 50px;
-
-			&>* {
-				border: none;
-			}
-
-			
-
-			&>p {
-				display: flex;
-				width: 50%;
-				height: 100%;
-				text-align: center;
-				background-color: transparent;
-				justify-content: center;
-				align-items: center;
-				font-size: 20px;
-				font-weight: 600;
-			}
-
-			&>button {
-				width: 25%;
-				display: flex;
-				background-color: transparent;
-				align-items: center;
-				justify-content: center;
-				align-content: center;
-				flex-direction: row;
-				font-size: 32px;
-			}
-
-		}
 	}
 }
 
-.itemDetailAddToCart{
+.itemDetailInputText {
+	width: 25px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+
+}
+
+.itemDetailAddToCart {
 	background-color: #000000;
 	border: none;
 	width: 185px;
 
-
-	&>p{
+	&>p {
 		font-size: 16px;
 		color: white;
 	}
@@ -669,9 +641,51 @@ body {
 	font-weight: 600;
 }
 
-.checkoutComponent{
-	&>img{
-		width: 200px;
-		height: 200px;
+.checkoutContainer {
+	display: flex;
+	gap: 15px;
+	flex-direction: column;
+}
+
+.checkoutRight {
+	position: absolute;
+	right: 5px;
+	bottom: 5px;
+}
+
+.checkoutComponent {
+	position: relative;
+	width: 800px;
+
+	&>h2 {
+		font-size: 20px;
 	}
+
+	&>img {
+		width: 150px;
+		height: 150px;
+	}
+
+	&>h2 {
+		position: absolute;
+		left: 155px;
+		top: 5px;
+		width: calc(100% - 160px);
+	}
+
+	&>h3 {
+		position: absolute;
+		font-size: 20px;
+		font-weight: 600;
+		left: 155px;
+		top: 120px;
+	}
+}
+
+.horizontal {
+	display: flex
+}
+
+.endCheckout {
+	
 }
