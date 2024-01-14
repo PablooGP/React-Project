@@ -1,44 +1,45 @@
 import React, { useEffect, useState } from "react"
-import ProductItem from "./ProductItem.jsx"
+import ItemList from "./ItemList.jsx"
 import { useParams } from "react-router-dom"
+import { collection, getDocs, getFirestore } from "firebase/firestore"
 
 const ItemListContainer = ({ greeting }) => {
 
-    const { id } = useParams()
+	const { id } = useParams()
 
-    const [products, setProducts] = useState([])
+	const [products, setProducts] = useState([])
 
-    useEffect(() => {
-        const fetchData = async function () {
-            const request = await fetch(`https://backend-react-production.up.railway.app/api/category/${id||1}`)
-            const response = await request.json()
-            if (response.success && response.status == 200) {
-                setProducts(response.response)
-            }
-        }
-        console.log("fetch data")
-        fetchData()
-    }, [id])
+	useEffect(() => {
+		const db = getFirestore()
+		const productsCollection = collection(db, "productos")
 
-    return (
-        <>
-            <p>{greeting}</p>
-            <div id="spanFilterContainer">
-                <div id="productsContainer">
-                    {
+		getDocs(productsCollection).then(snapshot => {
+			setProducts(snapshot.docs.map(doc => {
+				return {
+					id: doc.id,
+					...doc.data()
+				}
+			}))
+		})
+	}, [])
 
-                        products.length > 0 ?
-                            products.map((item, i) => {
-                                return <ProductItem name={item.name} key={i} stock={item.stock} id={item.id} price={item.price - item.discount} imageName={item.image} />
-                            })
-                        :
-                        <p>{"CARGANDO CONTENIDO"}</p>
-                    }
-
-                </div>
-            </div>
-        </>
-    )
+	return (
+		<>
+			<p>{greeting}</p>
+			<div id="spanFilterContainer">
+				<div id="productsContainer">
+					{
+						products.length > 0 ?
+							products.map((item, i) => {
+								return <ItemList name={item.name} key={i} stock={item.stock} id={item.id} price={item.price - item.discount} imageName={item.image} />
+							})
+						:
+						<p>{"CARGANDO CONTENIDO"}</p>
+					}
+				</div>
+			</div>
+		</>
+	)
 }
 
 export default ItemListContainer

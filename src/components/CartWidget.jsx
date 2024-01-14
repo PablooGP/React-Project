@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
+import { useCartContext } from './CartContext.jsx'
+import { ConvertPrice } from '../scripts/functions.js'
+import { Link } from 'react-router-dom'
 
 const CartWidget = () => {
+	const Cart = useCartContext()
+	Cart.SetUpdater(useState(0))
 
-    const [cartData, setCartData] = useState({
-        total: 0, // precio total del carrito
-        items: 0 // cantidad de productos en el carrito
-    })
-
-    return (
-        <span className="topbarButton horizontalAlign">
-            <img className="topbarButtonImg" src="/assets/cartIcon.png" alt="Carrito de compra" />
-            <div id="cartText">{cartData.items}</div>
-            <p>{`$ ${cartData.total}`}</p>
-        </span>
-    )
+	return (
+		<Link to={"/checkout"} className="topbarButton horizontalAlign">
+			<img className="topbarButtonImg" src="/assets/cartIcon.png" alt="Carrito de compra" />
+			<div id="cartText">{Cart.GetTotalProducts()}</div>
+			<p>{`${ConvertPrice(Cart.GetTotalPrice(), ".")}`}</p>
+		</Link>
+	)
 }
 
 export default CartWidget

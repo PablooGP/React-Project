@@ -16,8 +16,14 @@ const ProductItem = ({name, stock, price, imageName, id}) => {
         stockClass = "productNostock-type1"
     }
 
+    const onClick = (e) => {
+        e.stopPropagation()
+        e.preventDefault()
+        console.log("HI")
+    }
+
     return (
-        <Link to={`/item/${id}`} className="productoFrame-type1">
+        <Link to={`/item/${id}`} className="productoFrame-type1" onClick={(e) => e.stopPropagation()}>
             <div className="productImage-type1">
                 <img className="productImageFull" srcSet={`${backend_url}/images/${imageName}`} alt={name}/>
             </div>
@@ -29,7 +35,7 @@ const ProductItem = ({name, stock, price, imageName, id}) => {
             <p className={`productStock-type1 ${stockClass}`}>{stockText}</p>
             <p className="productPrice-type1">{ConvertPrice(price, ".")}</p>
             <div className="cartContainer-type1" hidden={!hasStock}>
-                <button className="productAddCart-type1" type="button">
+                <button className="productAddCart-type1" type="button" onClick={onClick}>
                     <img className="fullSize" srcSet="/assets/cartIcon.png" title="Añadir al carrito"/>
                 </button>
             </div>
