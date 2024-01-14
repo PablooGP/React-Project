@@ -2,14 +2,31 @@ import React, { useState } from 'react'
 import { useCartContext } from './CartContext'
 import { ItemQuantitySelector } from './ItemDetail.jsx'
 import { ConvertPrice } from '../scripts/functions.js'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
+import { addDoc, collection, getFirestore } from 'firebase/firestore'
 
 const Checkout = () => {
 
 	const Cart = useCartContext()
 	const [updater, setUpdater] = useState(0)
+	const [redirect, setRedirect] = useState("")
 
+	if (redirect.length>0) {
+		return <Navigate to={`/brief/${redirect}`}/>
+	}
 
+	const createOrder = async () => {
+		const db = getFirestore()
+		const docRef = await addDoc(collection(db, "orders"), {
+			products: Cart.GetAllProducts(),
+			createDate: Date.now()
+		});
+		
+		if (docRef.id) {
+			Cart.Clear()
+			setRedirect(docRef.id)
+		}
+	}
 
 	return (
 		<>
@@ -31,10 +48,8 @@ const Checkout = () => {
 					)
 				})}
 			</div>
-			<></>
-			<Link to={"/brief"} className="endCheckout" type="button" style={{display: Cart.GetAllProducts()==0 && "none"}}>Finalizar compra</Link>
+			<button type="button" className="endCheckout" onClick={createOrder} style={{ display: Cart.GetAllProducts() == 0 && "none" }}>Finalizar compra</button>
 		</>
-
 	)
 }
 export default Checkout

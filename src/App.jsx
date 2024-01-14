@@ -6,6 +6,7 @@ import ItemDetailContainer from "./components/ItemDetailContainer.jsx"
 import CartProvider from "./components/CartContext.jsx";
 import Checkout from "./components/Checkout.jsx"
 import Brief from "./components/Brief.jsx"
+import SuccessOrder from "./components/SuccessOrder.jsx";
 
 function App() {
 	return (
@@ -17,7 +18,8 @@ function App() {
 					<Route exact path="/category/:id" element={<ItemListContainer greeting="Lista de productos por categoria" />}></Route>
 					<Route exact path="/item/:id" element={<ItemDetailContainer></ItemDetailContainer>}></Route>
 					<Route exact path="/checkout" element={<Checkout/>}/>
-					<Route exact path="/brief" element={<Brief/>}/>
+					<Route exact path="/brief/:id" element={<Brief/>}/>
+					<Route exact path="/successorder" element={<SuccessOrder/>}/>
 				</Routes>
 			</CartProvider>
 		</BrowserRouter>

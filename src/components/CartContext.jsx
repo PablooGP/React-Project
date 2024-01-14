@@ -60,7 +60,8 @@ class CartClass {
 		localStorage.setItem("cart", JSON.stringify(newCart))
 	}
 
-	ClearCart = () => {
+	Clear = () => {
+		this.cart = []
 		this.setCart([])
 		this.#SaveCart()
 	}
