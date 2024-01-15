@@ -47,7 +47,6 @@ const ClientLocation = () => {
 	return (
 		<>
 			<h4 className="midText">Dirección de Envío</h4>
-			
 				<SelectLabel viewText="Provincia:" values={["Buenos Aires", "Catamarca", "Chaco", "Chubut", "Cordoba", "Corrientes", "Entre Rios", "Formosa", "Jujuy", "La Pampa", "La Rioja", "Mendoza", "Misiones", "Neuquen", "Rio Negro", "Salta", "San Juan", "San Luis", "Santa Cruz", "Santa Fe", "Santiago del Estero", "Tierra del Fuego", "Tucuman"]} />
 				<FormLabel viewText="Código Postal:" labelFor="cp" />
 				<FormLabel viewText="Dirección:" labelFor="address" />
